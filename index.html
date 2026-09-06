@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Элегант — Швейное ателье</title>
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ——— Сброс и база ——— */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fcf8f5;
+            color: #2d2a28;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ——— Шапка ——— */
+        .header {
+            background: #fffcf9;
+            padding: 18px 0;
+            border-bottom: 1px solid #eee7e1;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+            background: rgba(255, 252, 249, 0.88);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #1f1a17;
+        }
+        .logo span {
+            color: #b48a6b;
+        }
+
+        .nav {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #2d2a28;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+        .nav a:hover {
+            color: #b48a6b;
+            border-bottom-color: #b48a6b;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #b48a6b;
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: background 0.25s, transform 0.1s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #9f7659;
+            transform: scale(1.01);
+        }
+
+        /* ——— Герой (главный блок) ——— */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 60px 0 70px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1 1 400px;
+        }
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1f1a17;
+            margin-bottom: 18px;
+        }
+        .hero-text h1 span {
+            color: #b48a6b;
+        }
+        .hero-text p {
+            font-size: 18px;
+            color: #4f4944;
+            max-width: 480px;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            flex: 1 1 350px;
+            background: #e5dbd3;
+            height: 320px;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #5f534a;
+            background-image: radial-gradient(circle at 20% 30%, #ddd0c5, #cbbcb0);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.4px;
+        }
+        .hero-image span {
+            background: rgba(255,252,249,0.7);
+            padding: 16px 28px;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+        }
+
+        /* ——— Услуги ——— */
+        .services {
+            padding: 60px 0 70px;
+            background: #fffcf9;
+            border-radius: 48px 48px 0 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .section-sub {
+            text-align: center;
+            color: #5f534a;
+            margin-bottom: 44px;
+            font-size: 17px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 28px;
+        }
+
+        .service-item {
+            background: #fff;
+            padding: 28px 20px;
+            border-radius: 24px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+            border: 1px solid #f0e8e1;
+            transition: 0.2s;
+            text-align: center;
+        }
+        .service-item:hover {
+            border-color: #dccfc4;
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(0,0,0,0.04);
+        }
+        .service-icon {
+            font-size: 38px;
+            margin-bottom: 8px;
+        }
+        .service-item h3 {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .service-item p {
+            font-size: 14px;
+            color: #5f534a;
+        }
+
+        /* ——— О нас ——— */
+        .about {
+            padding: 50px 0 60px;
+        }
+        .about-inner {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .about-text {
+            flex: 1 1 300px;
+        }
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            margin-bottom: 16px;
+        }
+        .about-text p {
+            color: #4f4944;
+            margin-bottom: 18px;
+        }
+
+        .about-image {
+            flex: 1 1 260px;
+            background: #dacfc6;
+            height: 240px;
+            border-radius: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(145deg, #e1d5cb, #cfc1b5);
+            color: #5f534a;
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+        }
+        .about-image span {
+            background: rgba(255,252,249,0.7);
+            padding: 12px 28px;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+        }
+
+        /* ——— Форма заявки ——— */
+        .cta {
+            background: #fffcf9;
+            padding: 60px 0;
+            border-radius: 48px 48px 0 0;
+            border-top: 1px solid #eee7e1;
+        }
+
+        .cta-box {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .cta-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .cta-box p {
+            color: #5f534a;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .form-group input {
+            padding: 14px 20px;
+            border-radius: 40px;
+            border: 1px solid #ddd2c9;
+            font-size: 15px;
+            background: #fff;
+            transition: 0.2s;
+            outline: none;
+        }
+        .form-group input:focus {
+            border-color: #b48a6b;
+            box-shadow: 0 0 0 3px rgba(180, 138, 107, 0.12);
+        }
+        .form-group .btn {
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            font-size: 16px;
+        }
+
+        /* ——— Подвал ——— */
+        .footer {
+            background: #1f1a17;
+            color: #cbc1b9;
+            padding: 32px 0;
+            border-radius: 48px 48px 0 0;
+            margin-top: 10px;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .footer-logo span {
+            color: #b48a6b;
+        }
+        .footer p {
+            font-size: 14px;
+            color: #a0948a;
+        }
+
+        /* ——— Адаптив для телефонов ——— */
+        @media (max-width: 640px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .nav {
+                justify-content: center;
+                gap: 18px;
+            }
+            .hero-text h1 {
+                font-size: 34px;
+            }
+            .hero-image {
+                height: 220px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ====== ШАПКА ====== -->
+<header class="header">
+    <div class="container header-inner">
+        <div class="logo">Эле<span>гант</span></div>
+        <nav class="nav">
+            <a href="#">Услуги</a>
+            <a href="#">О нас</a>
+            <a href="#">Контакты</a>
+        </nav>
+        <a href="#" class="btn">Записаться</a>
+    </div>
+</header>
+
+<!-- ====== ГЕРОЙ ====== -->
+<section class="hero container">
+    <div class="hero-text">
+        <h1>Индивидуальный пошив<br /><span>с душой и стилем</span></h1>
+        <p>Швейное ателье «Элегант» — создаём одежду, которая подчёркивает вашу уникальность. Ручная работа, премиальные ткани и безупречная посадка.</p>
+        <a href="#" class="btn">Обсудить проект</a>
+    </div>
+    <div class="hero-image">
+        <span>✧ Ваш образ начинается здесь ✧</span>
+    </div>
+</section>
+
+<!-- ====== УСЛУГИ ====== -->
+<section class="services">
+    <div class="container">
+        <h2 class="section-title">Что мы предлагаем</h2>
+        <p class="section-sub">Работаем с любыми задачами — от ремонта до вечерних платьев</p>
+        <div class="service-grid">
+            <div class="service-item">
+                <div class="service-icon">👗</div>
+                <h3>Пошив на заказ</h3>
+                <p>Платья, костюмы, пальто — по вашим меркам и эскизам.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">✂️</div>
+                <h3>Ремонт и подгонка</h3>
+                <p>Укоротим, ушьём, заменим молнию — аккуратно и быстро.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🧵</div>
+                <h3>Реставрация</h3>
+                <p>Вернём вторую жизнь любимым вещам, даже с деликатных тканей.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">📐</div>
+                <h3>Индивидуальный скетч</h3>
+                <p>Разработаем дизайн специально под ваш тип фигуры и вкус.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== О НАС ====== -->
+<section class="about container">
+    <div class="about-inner">
+        <div class="about-text">
+            <h2>О нашем ателье</h2>
+            <p>Мы работаем с 2014 года. За это время сшили более 3000 изделий — от повседневных рубашек до свадебных платьев. Любим сложные ткани, нестандартные размеры и трепетно относимся к каждой детали.</p>
+            <p>Наша команда — это дизайнеры, закройщики и мастера с опытом от 10 лет. Приходите, и мы превратим ваши идеи в реальность.</p>
+            <a href="#" class="btn" style="margin-top: 6px;">Связаться</a>
+        </div>
+        <div class="about-image">
+            <span>♥ 10 лет мастерства</span>
+        </div>
+    </div>
+</section>
+
+<!-- ====== ФОРМА ЗАЯВКИ ====== -->
+<section class="cta">
+    <div class="container cta-box">
+        <h2>Хотите обсудить заказ?</h2>
+        <p>Оставьте номер телефона — мы перезвоним в течение 15 минут и ответим на все вопросы.</p>
+        <form class="form-group" onsubmit="alert('Спасибо! Мы свяжемся с вами в ближайшее время.'); return false;">
+            <input type="text" placeholder="Ваше имя" required />
+            <input type="tel" placeholder="+7 (___) ___-__-__" required />
+            <button type="submit" class="btn">Отправить заявку</button>
+        </form>
+    </div>
+</section>
+
+<!-- ====== ПОДВАЛ ====== -->
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-logo">Эле<span>гант</span></div>
+        <p>© 2026 Швейное ателье · Все права защищены</p>
+        <p style="font-size: 13px;">Санкт-Петербург, ул. Невский 12</p>
+    </div>
+</footer>
+
+</body>
+</html>
